@@ -23,26 +23,52 @@
   <body>
     <h1>Leaflet in Django!</h1>
 
-    <p>{{ point.name }}:({{ point.latitude }}, {{ point.longitude }})</p>
+    <!--<form>
+        <table>
+            {% for point in points %}
+                <tr>
+                    <th>
+                        <input type="radio" name="start_point" value="{{ point.name }}">{{ point.name }}
+                    </th>
+                    <th>
+                        <input type="radio" name="end_point" value="{{ point.name }}">{{ point.name }}
+                    </th>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>-->
+    <form action="{% url 'map:index' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Chek</button>
+    </form>
 
     <div class="map" id="map"></div>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
 
+    <!-- Variables definition -->
+    <script>
+        //var pointLat = {{ point.latitude }};
+        //var pointLng = {{ point.longitude }};
+        var points = {{ points }}
+    </script>
+
+    <!-- Leaflet script -->
     <script type="text/javascript">
 
       var map = L.map('map').setView([42.35, -71.08], 13);
 
-      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
-        {
+      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
           attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
           maxZoom: 17,
           minZoom: 9
-        }).addTo(map);
+      }).addTo(map);
 
-      L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
 
-      console.log({{ point.latitude }})
+      //L.marker([pointLat, pointLng]).addTo(map);
+
+      /*
 
       L.Routing.control({
         waypoints: [
@@ -61,7 +87,7 @@
         routeWhileDragging: true,
         show: false
       }).addTo(map);
-
+        */
     </script>
   </body>
 </html>
