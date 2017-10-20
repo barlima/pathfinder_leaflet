@@ -22,41 +22,39 @@
   </head>
   <body>
     <h1>Leaflet in Django!</h1>
-
-    <p>{{ point.name }}:({{ point.latitude }}, {{ point.longitude }})</p>
+    <h3>Select Connection:</h3>
+    <table>
+       <form action="{% url 'map:index' %}" method="post">
+            {% csrf_token %}
+                <tr>
+                    {% for field in form %}
+                        <th>
+                            {{ field }}
+                        </th>
+                    {% endfor %}
+                </tr>
+        </form>
+    </table>
 
     <div class="map" id="map"></div>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
 
+    <!-- Leaflet script -->
     <script type="text/javascript">
 
       var map = L.map('map').setView([42.35, -71.08], 13);
 
-      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png',
-        {
+      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
           attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
           maxZoom: 17,
           minZoom: 9
-        }).addTo(map);
-
-      L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
-
-      console.log({{ point.latitude }})
-
-      L.Routing.control({
-        waypoints: [
-          L.latLng(42.36, -71.11),
-          L.latLng(42.34, -71.03)
-        ],
-        routeWhileDragging: true,
-        show: false
       }).addTo(map);
 
       L.Routing.control({
         waypoints: [
-          L.latLng(42.37, -71.08),
-          L.latLng(42.33, -71.08)
+          L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
+          L.latLng({{ endPoint.latitude }}, {{ endPoint.longitude }})
         ],
         routeWhileDragging: true,
         show: false
