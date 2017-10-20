@@ -51,6 +51,10 @@
           minZoom: 9
       }).addTo(map);
 
+      {% for point in points %}
+          L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
+      {% endfor %}
+
       L.Routing.control({
         waypoints: [
           L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
