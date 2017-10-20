@@ -7,12 +7,23 @@ from points.forms import PointRadioForm
 
 
 def index(request):
+    pathPoints = ()
+    beginPoint = Point()
+    endPoint = Point()
+    points = Point.objects.all()
+
     if request.method != 'POST':
-        form = PointRadioForm()
+        form = PointRadioForm({'radioFieldBegin': 'A', 'radioFieldEnd': 'A'})
     else:
         form = PointRadioForm(request.POST)
         if form.is_valid():
-            pass
+            beginPoint = Point.objects.get(name=form['radioFieldBegin'].value())
+            endPoint = Point.objects.get(name=form['radioFieldEnd'].value())
 
-    context = {'points': Point.objects.all(), 'form': form}
+    context = {
+        'beginPoint': beginPoint,
+        'endPoint': endPoint,
+        'points': points,
+        'form': form
+    }
     return render(request, 'map/index.html', context)

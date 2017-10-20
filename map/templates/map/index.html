@@ -22,37 +22,23 @@
   </head>
   <body>
     <h1>Leaflet in Django!</h1>
-
-    <!--<form>
-        <table>
-            {% for point in points %}
+    <h3>Select Connection:</h3>
+    <table>
+       <form action="{% url 'map:index' %}" method="post">
+            {% csrf_token %}
                 <tr>
-                    <th>
-                        <input type="radio" name="start_point" value="{{ point.name }}">{{ point.name }}
-                    </th>
-                    <th>
-                        <input type="radio" name="end_point" value="{{ point.name }}">{{ point.name }}
-                    </th>
+                    {% for field in form %}
+                        <th>
+                            {{ field }}
+                        </th>
+                    {% endfor %}
                 </tr>
-            {% endfor %}
-        </table>
-    </form>-->
-    <form action="{% url 'map:index' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit">Chek</button>
-    </form>
+        </form>
+    </table>
 
     <div class="map" id="map"></div>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
-
-    <!-- Variables definition -->
-    <script>
-        //var pointLat = {{ point.latitude }};
-        //var pointLng = {{ point.longitude }};
-        var points = {{ points }}
-    </script>
 
     <!-- Leaflet script -->
     <script type="text/javascript">
@@ -65,29 +51,15 @@
           minZoom: 9
       }).addTo(map);
 
-
-      //L.marker([pointLat, pointLng]).addTo(map);
-
-      /*
-
       L.Routing.control({
         waypoints: [
-          L.latLng(42.36, -71.11),
-          L.latLng(42.34, -71.03)
+          L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
+          L.latLng({{ endPoint.latitude }}, {{ endPoint.longitude }})
         ],
         routeWhileDragging: true,
         show: false
       }).addTo(map);
 
-      L.Routing.control({
-        waypoints: [
-          L.latLng(42.37, -71.08),
-          L.latLng(42.33, -71.08)
-        ],
-        routeWhileDragging: true,
-        show: false
-      }).addTo(map);
-        */
     </script>
   </body>
 </html>

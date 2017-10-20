@@ -4,12 +4,14 @@ from .models import Point
 
 
 class PointRadioForm(forms.Form):
-    CHOICES = (
-        ('point_A', 'A'),
-        ('point_B', 'B'),
-        ('point_C', 'C'),
-        ('point_D', 'D'),
-        ('point_E', 'E'),
-    )# This should takes values from Point model
+    CHOICES = [(point.name, point.name) for point in reversed(Point.objects.all())]
 
-    radioField = forms.ChoiceField(widget=forms.RadioSelect, choices=CHOICES)
+    radioFieldBegin = forms.ChoiceField(
+                                    widget=forms.RadioSelect(attrs={'onchange': 'this.form.submit();'}),
+                                    choices=CHOICES,
+                                    )
+
+    radioFieldEnd = forms.ChoiceField(
+                                    widget=forms.RadioSelect(attrs={'onchange': 'this.form.submit();'}),
+                                    choices=CHOICES,
+                                    )
