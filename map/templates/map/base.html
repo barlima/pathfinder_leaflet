@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Map Routing</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css' %}" />
+    <style media="screen">
+      .map {
+        position: absolute;
+        width: 700px;
+        height: 500px;
+      }
+
+      .leaflet-control-container .leaflet-routing-container-hide {
+        display: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <small>
+        <a href="{% url 'map:index' %}">Home</a>
+    </small> |
+    <small>
+        <a href="{% url 'map:multi_point_path' %}">Multi Points</a>
+    </small>
+    <h1>Leaflet in Django!</h1>
+
+    {% block content %}{% endblock content %}
+
+  </body>
+
+</html>

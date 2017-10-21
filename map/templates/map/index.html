@@ -1,31 +1,16 @@
+{% extends 'map/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Map Routing</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <link rel="stylesheet" href="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css' %}" />
-    <style media="screen">
-      .map {
-        position: absolute;
-        width: 700px;
-        height: 500px;
-      }
+{% block title %}{{ section.title }}{% endblock %}
 
-      .leaflet-control-container .leaflet-routing-container-hide {
-        display: none;
-      }
+{% block content %}
 
-    </style>
-  </head>
-  <body>
-    <h1>Leaflet in Django!</h1>
     <h3>Select Connection:</h3>
-    <table>
-       <form action="{% url 'map:index' %}" method="post">
-            {% csrf_token %}
+
+    <div id="forms">
+        <table>
+            <form action="{% url 'map:index' %}" method="post">
+                {% csrf_token %}
                 <tr>
                     {% for field in form %}
                         <th>
@@ -33,37 +18,39 @@
                         </th>
                     {% endfor %}
                 </tr>
-        </form>
-    </table>
+            </form>
+        </table>
+    </div>
 
     <div class="map" id="map"></div>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script type="text/javascript"></script>
 
     <!-- Leaflet script -->
     <script type="text/javascript">
 
-      var map = L.map('map').setView([42.35, -71.08], 13);
+        var map = L.map('map').setView([42.35, -71.08], 13);
 
-      L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-          attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-          maxZoom: 17,
-          minZoom: 9
-      }).addTo(map);
+        L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+            attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+            maxZoom: 17,
+            minZoom: 9
+        }).addTo(map);
 
-      {% for point in points %}
-          L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
-      {% endfor %}
+        {% for point in points %}
+            L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
+        {% endfor %}
 
-      L.Routing.control({
-        waypoints: [
-          L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
-          L.latLng({{ endPoint.latitude }}, {{ endPoint.longitude }})
-        ],
-        routeWhileDragging: true,
-        show: false
-      }).addTo(map);
+        L.Routing.control({
+            waypoints: [
+                L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
+                L.latLng({{ endPoint.latitude }}, {{ endPoint.longitude }})
+            ],
+            routeWhileDragging: true,
+            show: false
+        }).addTo(map);
 
     </script>
-  </body>
-</html>
+
+{% endblock content %}
