@@ -3,10 +3,31 @@
 
 {% block content %}
 
-    <div class="map" id="map"></div>
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
     <script type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <div id="forms">
+        <form action="{% url 'map:multi_point_path' %}" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                {% if 'count' not in field.label %}
+                    {{ field.label }}{{ field }}<br>
+                {% else %}
+                    {{ field }}
+                {% endif %}
+            {% endfor %}
+            <button id="add-point">&#10010;</button>
+            <button id="clear-points">Clear</button>
+            <br>
+            <button name="submit">Find</button>
+        </form>
+    </div>
+
+
+    <div class="map" id="map"></div>
 
     <!-- Leaflet script -->
     <script type="text/javascript">
@@ -14,32 +35,57 @@
         var map = L.map('map').setView([42.35, -71.08], 13);
 
         L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-            attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-            maxZoom: 17,
-            minZoom: 9
+             attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+             maxZoom: 17,
+             minZoom: 9
+        }).addTo(map);
+    </script>
+
+    <!-- Adding fields for more stops -->
+    <script>
+        form_count = Number($("[name=extra_points_count]").val());
+        // get extra sets count so we know what index to use for the next item.
+        $("#add-point").click(function() {
+            form_count ++;
+
+            //element = $('<input type="text"/>');
+            //element.attr('name', 'extra_points_' + form_count);
+            //$("#forms").append(element);
+            // build element and append it to our forms container
+
+            $("[name=extra_points_count]").val(form_count);
+            // increment form count so our view knows to populate
+            // that many fields for validation
+        })
+
+        $("#clear-points").click(function () {
+            form_count = 0;
+            $("[name=extra_points_count]").val(form_count);
+        })
+    </script>
+
+    <!-- Points and paths -->
+    <script type="text/javascript">
+
+        // Draw all of the points
+        {% for point in points %}
+            L.marker([
+                    {{ point.latitude }}, {{ point.longitude }}
+                ]
+            ).addTo(map);
+        {% endfor %}
+
+        // Draw selected paths
+        L.Routing.control({
+            waypoints: [
+                {% for middlePoint in middlePoints %}
+                    L.latLng({{ middlePoint.latitude }}, {{ middlePoint.longitude }}),
+                {% endfor %}
+            ],
+            routeWhileDragging: true,
+            show: false
         }).addTo(map);
 
     </script>
 
 {% endblock content %}
-
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="">
-        form_count = Number($("[name=extra_field_count]").val());
-        // get extra sets count so we know what index to use for the next item.
-        $("#add-point").click(function() {
-            form_count ++;
-
-            element = $('<input type="text"/>');
-            element.attr('name', 'extra_sets_' + form_count);
-            $("#forms").append(element);
-            // build element and append it to our forms container
-
-            $("[name=extra_sets_count]").val(form_count);
-            // increment form count so our view knows to populate
-            // that many fields for validation
-        })
-    </script>
--->

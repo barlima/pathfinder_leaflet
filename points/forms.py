@@ -1,6 +1,18 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 from .models import Point
+
+
+# Validators
+# ToDo: Check how to make this vlidator working
+
+def validate_point(value):
+    if not Point.objects.filter(name=value):
+        raise ValidationError(
+           _('%(value)s is not a valid input'), params={'value': value}
+        )
 
 
 class PointRadioForm(forms.Form):
@@ -18,27 +30,20 @@ class PointRadioForm(forms.Form):
 
 
 class PointForm(forms.Form):
-    CHOICES = [(point.name, point.name) for point in reversed(Point.objects.all())]
+    begin_point = forms.CharField(required=False, validators=[validate_point])
 
-    radioField = forms.ChoiceField(
-        widget=forms.RadioSelect(attrs={'onchange': 'this.form.submit();'}),
-        choices=CHOICES,
-    )
+    extra_points_count = forms.CharField(widget=forms.HiddenInput())
 
-    extra_sets_count = forms.ChoiceField(
-        widget=forms.HiddenInput(),
-    )
-
-    # Add new set of radio buttons when '+' is clicked
+    # Add new field of when '+' is clicked
     def __init__(self, *args, **kwargs):
-        extra_sets = kwargs.pop('extra', 0)
+        extra_fields = kwargs.pop('extra', 0)
 
-        extra_sets = extra_sets if not type(extra_sets) != 'NoneType' else 1
+        extra_fields = extra_fields if extra_fields else 1
 
         super().__init__(*args, **kwargs)
-        self.fields['extra_sets_count'].initial = extra_sets
+        self.fields['extra_points_count'].initial = extra_fields
 
-        for i in range(int(extra_sets)):
-            self.fields['extra_sets_{i}'.format(i=i)] = forms.RadioSelect(attrs={'onchange': 'this.form.submit();'})
+        for i in range(int(extra_fields)):
+            self.fields['extra_points_{i}'.format(i=i)] = forms.CharField(required=False, validators=[validate_point])
 
 
