@@ -7,7 +7,6 @@ from points.forms import PointForm, PointRadioForm
 
 
 def index(request):
-# def old_index(request):
     begin_point = Point()
     end_point = Point()
     points = Point.objects.all()
@@ -30,4 +29,27 @@ def index(request):
 
 
 def multi_point_path(request):
-    return render(request, 'map/multi_point_path.html')
+    points = Point.objects.all()
+    middle_points = []
+
+    if request.method != 'POST':
+        form = PointForm(extra=0)
+    else:
+        extra_point_number = request.POST.get('extra_points_count')
+        form = PointForm(request.POST, extra=extra_point_number)
+        if form.is_valid():
+            middle_points.append(Point.objects.get(name=form['begin_point'].value()))
+            for extra_point in range(int(extra_point_number)):
+                try:
+                    middle_points.append(Point.objects.get(name=form['extra_points_{ep}'.format(ep=extra_point)].value()))
+                except:
+                    # ToDo: Inform user about invalid input in case input is not empty
+                    print(form['extra_points_{ep}'.format(ep=extra_point)].value())
+
+    context = {
+        'form': form,
+        'points': points,
+        'middlePoints': middle_points,
+    }
+
+    return render(request, 'map/multi_point_path.html', context)
