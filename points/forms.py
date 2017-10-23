@@ -10,8 +10,9 @@ from .models import Point
 
 def validate_point(value):
     if not Point.objects.filter(name=value):
+        print("ValidationError")
         raise ValidationError(
-           _('%(value)s is not a valid input'), params={'value': value}
+            _('%(value)s is not a valid input'), params={'value': value}
         )
 
 

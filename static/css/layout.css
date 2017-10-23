@@ -1,0 +1,17 @@
+.button {
+    background-color: #4CAF50; /* Green */
+    border: 1px solid green;
+    color: white;
+    display: inline-block;
+    padding: 6px 26px;
+    border-radius: 8px;
+}
+
+.button:hover {
+    background-color: green;
+    color: white;
+}
+
+.button-find {
+    width: 160px;
+}
