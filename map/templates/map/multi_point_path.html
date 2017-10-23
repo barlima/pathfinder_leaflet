@@ -19,16 +19,35 @@
                     {{ field }}
                 {% endif %}
             {% endfor %}
-            <button id="add-point">&#10010;</button>
-            <button id="clear-points">Clear</button>
+            <button id="add-point" class="button">&#10010;</button>
+            <button id="clear-points" class="button">Clear</button>
             <br>
-            <button name="submit">Find</button>
+            <button name="submit" class="button button-find">Find</button>
         </form>
     </div>
 
-
-    <div class="map" id="map"></div>
-
+    <table>
+        <tr>
+            <th>
+                <br>
+                <p>Distance between points:</p>
+                <div id="routeData">
+                    {% for middlePoint in middlePoints %}
+                        {% if forloop.first %}
+                            {{ middlePoint.name }} -
+                        {% elif forloop.last %}
+                            {{ middlePoint.name }}:
+                        {% else %}
+                            {{ middlePoint.name }}:<br>{{ middlePoint.name }} -
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </th>
+            <th>
+                <div class="map" id="map"></div>
+            </th>
+        </tr>
+    </table>
     <!-- Leaflet script -->
     <script type="text/javascript">
 
@@ -76,15 +95,42 @@
         {% endfor %}
 
         // Draw selected paths
+        // var route =
         L.Routing.control({
             waypoints: [
                 {% for middlePoint in middlePoints %}
                     L.latLng({{ middlePoint.latitude }}, {{ middlePoint.longitude }}),
                 {% endfor %}
             ],
-            routeWhileDragging: true,
+            routeWhileDragging: false,
             show: false
         }).addTo(map);
+
+
+        // In case you have to check if it works for normal coordinates
+        /*
+        L.Routing.control({
+            waypoints: [
+                L.latLng(42.35, -71.08),
+                L.latLng(42.35, -71.03),
+            ],
+            routeWhileDragging: false,
+            show: false
+        }).addTo(map);
+        */
+
+        /*
+        var router = route.getRouter();
+        var distance = router.summary.totalDistance;
+        var time = router.summary.totalTime;
+        */
+
+        // Comment the content of div (id="routeData") and add the bolow line
+        /* setTimeAndDistance(A, B, distance, time); // where A is begin point, B is end point
+
+        // put the above commented section to the loop
+        // consider changing form from django to js...
+        */
 
     </script>
 
