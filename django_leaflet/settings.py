@@ -122,5 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    '/home/bartek/MyProjects/Leaflet_tutorial/django_leaflet/static'
+    '/home/bartek/MyProjects/Leaflet_tutorial/Pathfinder_leaflet/django_leaflet/static'
 ]
