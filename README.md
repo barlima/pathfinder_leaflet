@@ -6,7 +6,7 @@ Prepared as a training before creating a proper application.
 
 ### Prerequisites
 
-Make sure you have installed **Python 3.6**, **pip3** and **django**. In case you haven't, run the below commands.
+Make sure you have installed **Python 3.6**, **pip3** and **django**. In case you haven't, run the commands below.
 
 **For Ubuntu Linux:**
 ```
