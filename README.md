@@ -36,7 +36,24 @@ STATICFILES_DIRS = [
 ]
 ```
 
-### Run the server
+### Required repositories
+
+Clone two more repositories to your working directory:
+- [OSRM backend](https://github.com/barlima/osrm-backend)
+- [Leaflet Routing Machine](https://github.com/barlima/leaflet-routing-machine)
+
+At the end you should have a directory structure like this:
+```
+Working directory:
+- pathfinder_leaflet
+- osrm-backend
+- leaflet routing machine
+
+```
+
+## Run the server
+
+---
 
 Go to **pathfinder_leaflet** dir and run:
 ```
