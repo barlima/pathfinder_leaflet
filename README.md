@@ -48,12 +48,9 @@ Working directory:
 - pathfinder_leaflet
 - osrm-backend
 - leaflet routing machine
-
 ```
 
 ## Run the server
-
----
 
 Go to **pathfinder_leaflet** dir and run:
 ```
