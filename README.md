@@ -20,6 +20,22 @@ Go to the directory where you would like to download the projects.
 git clone git@github.com:barlima/pathfinder_leaflet.git
 ```
 
+### Setup static folder location
+
+Add full path of static folder location to **django_leaflet/settings.py**.
+
+```
+cd pathfinder_leaflet/static
+pwd
+```
+Copy the result and paste it to **settings.py**
+```
+STATICFILES_DIRS = [
+    '/home/bartek/MyProjects/Leaflet_tutorial/django_leaflet/static',
+    [PATH_TO_STATIC_DIR]
+]
+```
+
 ### Run the server
 
 Go to **pathfinder_leaflet** dir and run:
