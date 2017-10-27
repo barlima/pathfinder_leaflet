@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72b095aa-ef7b-4aa0-bd1b-dc0e9f2302ea" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map/templates/map/index.html" afterPath="$PROJECT_DIR$/map/templates/map/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/map/templates/map/multi_point_path.html" afterPath="$PROJECT_DIR$/map/templates/map/multi_point_path.html" />
+=======
+<<<<<<< Updated upstream
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/leaflet.js" afterPath="$PROJECT_DIR$/static/js/leaflet.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/README.md" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/package.json" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/scripts/publish.sh" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/scripts/publish.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/itinerary.js" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/itinerary.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/localization.js" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/localization.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm-v1.js" afterPath="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm-v1.js" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+>>>>>>> Stashed changes
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,6 +40,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/map/views.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,6 +74,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="140">
               <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+=======
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/map/templates/map/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="8" column="97" lean-forward="false" selection-start-line="8" selection-start-column="97" selection-end-line="8" selection-end-column="97" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
               <folding>
                 <marker date="1509123688675" expanded="true" signature="316:561" ph="..." />
                 <marker date="1509123688675" expanded="true" signature="316:839" ph="..." />
@@ -72,9 +98,17 @@
       <file leaf-file-name="multi_point_path.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/map/templates/map/multi_point_path.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="307">
               <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding />
+=======
+            <state relative-caret-position="140">
+              <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+              <folding>
+                <marker date="1508951282142" expanded="true" signature="2910:2924" ph="..." />
+              </folding>
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
             </state>
           </provider>
         </entry>
@@ -85,6 +119,9 @@
     <findStrings>
       <find>contain</find>
       <find>_coun</find>
+      <find>project-osrm</find>
+      <find>url</find>
+      <find>serviceUrl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,13 +141,23 @@
         <option value="$PROJECT_DIR$/points/models.py" />
         <option value="$PROJECT_DIR$/map/urls.py" />
         <option value="$PROJECT_DIR$/static/js/index.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/map/templates/map/base.html" />
+=======
+        <option value="$PROJECT_DIR$/map/templates/map/index.html" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
         <option value="$PROJECT_DIR$/map/views.py" />
         <option value="$PROJECT_DIR$/points/forms.py" />
         <option value="$PROJECT_DIR$/django_leaflet/settings.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/map/templates/map/index.html" />
         <option value="$PROJECT_DIR$/map/templates/map/multi_point_path.html" />
         <option value="$PROJECT_DIR$/static/js/map.js" />
+=======
+        <option value="$PROJECT_DIR$/map/templates/map/base.html" />
+        <option value="$PROJECT_DIR$/static/js/leaflet.js" />
+        <option value="$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm-v1.js" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
       </list>
     </option>
   </component>
@@ -172,6 +219,10 @@
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -183,11 +234,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="points" />
+=======
               <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< Updated upstream
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+=======
+          </PATH>
+          <PATH>
+>>>>>>> Stashed changes
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leaflet-routing-machine" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -201,6 +265,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< Updated upstream
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_leaflet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_leaflet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
               <option name="myItemId" value="points" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -215,20 +296,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="map" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_leaflet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_leaflet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
+=======
+>>>>>>> Stashed changes
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
               <option name="myItemId" value="django_leaflet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -240,7 +310,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -474,9 +544,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19123507" sideWeight="0.4943274" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18486056" sideWeight="0.4943274" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -509,25 +582,25 @@
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5173554" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18486056" sideWeight="0.4943274" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18247011" sideWeight="0.50567263" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,6 +616,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/points/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -575,16 +649,22 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
     <entry file="file://$PROJECT_DIR$/points/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#0#24#0" expanded="true" />
             <marker date="1509123688675" expanded="true" signature="249:407" ph="..." />
             <marker date="1509123688675" expanded="true" signature="443:1001" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1032:1643" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1266:1643" ph="..." />
+=======
+            <element signature="e#0#24#0" expanded="false" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
           </folding>
         </state>
       </provider>
@@ -628,11 +708,15 @@
         <state relative-caret-position="120">
           <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#0#24#0" expanded="true" />
             <marker date="1509123688675" expanded="true" signature="249:407" ph="..." />
             <marker date="1509123688675" expanded="true" signature="443:1001" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1032:1643" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1266:1643" ph="..." />
+=======
+            <element signature="e#0#24#0" expanded="false" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
           </folding>
         </state>
       </provider>
@@ -703,11 +787,15 @@
         <state relative-caret-position="220">
           <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#0#24#0" expanded="true" />
             <marker date="1509123688675" expanded="true" signature="249:407" ph="..." />
             <marker date="1509123688675" expanded="true" signature="443:1001" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1032:1643" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1266:1643" ph="..." />
+=======
+            <element signature="e#0#24#0" expanded="false" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
           </folding>
         </state>
       </provider>
@@ -812,11 +900,15 @@
         <state relative-caret-position="120">
           <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
           <folding>
+<<<<<<< HEAD
             <element signature="e#0#24#0" expanded="true" />
             <marker date="1509123688675" expanded="true" signature="249:407" ph="..." />
             <marker date="1509123688675" expanded="true" signature="443:1001" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1032:1643" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1266:1643" ph="..." />
+=======
+            <element signature="e#0#24#0" expanded="false" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
           </folding>
         </state>
       </provider>
@@ -892,16 +984,59 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/js/leaflet.js">
+=======
+    <entry file="file://$PROJECT_DIR$/map/templates/map/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="46" column="25" lean-forward="false" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_leaflet/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
+        <state relative-caret-position="2480">
+          <caret line="124" column="87" lean-forward="true" selection-start-line="124" selection-start-column="87" selection-end-line="124" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/points/forms.py">
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#24#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="1" column="945" lean-forward="false" selection-start-line="1" selection-start-column="945" selection-end-line="1" selection-end-column="945" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/scripts/publish.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
         <state relative-caret-position="20">
           <caret line="5" column="1728" lean-forward="false" selection-start-line="5" selection-start-column="1727" selection-end-line="5" selection-end-column="1728" />
-          <folding />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/map/templates/map/base.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="140">
           <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
           <folding>
@@ -913,20 +1048,86 @@
             <marker date="1509123688675" expanded="true" signature="583:645" ph="..." />
             <marker date="1509123688675" expanded="true" signature="659:740" ph="..." />
             <marker date="1509123688675" expanded="true" signature="779:820" ph="{% block content ... %}" />
+=======
+        <state relative-caret-position="160">
+          <caret line="8" column="97" lean-forward="false" selection-start-line="8" selection-start-column="97" selection-end-line="8" selection-end-column="97" />
+          <folding>
+            <marker date="1508788624046" expanded="true" signature="316:561" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_leaflet/settings.py">
+    <entry file="file://$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2480">
-          <caret line="124" column="87" lean-forward="true" selection-start-line="124" selection-start-column="87" selection-end-line="124" selection-end-column="87" />
+<<<<<<< Updated upstream
+        <state relative-caret-position="195">
+          <caret line="20" column="22" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/points/forms.py">
+    <entry file="file://$PROJECT_DIR$/static/js/leaflet.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1205">
+          <caret line="1231" column="22" lean-forward="false" selection-start-line="1231" selection-start-column="21" selection-end-line="1231" selection-end-column="22" />
+=======
+        <state relative-caret-position="140">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+>>>>>>> Stashed changes
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/node_modules/leaflet-routing-machine/src/osrm-v1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+          <folding>
+            <marker date="1508961268275" expanded="true" signature="5840:6382" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="5840:6387" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="5840:6603" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="5840:9898" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="5859:6344" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="5949:5994" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6027:6335" ph="{&quot;type&quot;: type...}" />
+            <marker date="1508961268275" expanded="true" signature="6445:6522" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6528:6580" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6647:6756" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6817:7409" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6845:7405" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="6866:6889" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="6907:6926" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="6944:7007" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="7047:7072" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="7167:7210" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="7214:7341" ph="//..." />
+            <marker date="1508961268275" expanded="true" signature="7353:7400" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="7454:7719" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="7520:7665" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="7616:7660" ph="..." />
+            <marker date="1508961268275" expanded="true" signature="7748:7946" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="7845:7923" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="7977:8035" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8081:8303" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8241:8280" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8353:8645" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8434:8625" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8694:9517" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="8859:9030" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="9555:9605" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="9662:9894" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="9693:9717" ph="{...}" />
+            <marker date="1508961268275" expanded="true" signature="9776:9890" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map/templates/map/multi_point_path.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="40">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
@@ -935,6 +1136,12 @@
             <marker date="1509123688675" expanded="true" signature="443:1001" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1032:1643" ph="..." />
             <marker date="1509123688675" expanded="true" signature="1266:1643" ph="..." />
+=======
+        <state relative-caret-position="140">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding>
+            <marker date="1508951282142" expanded="true" signature="2910:2924" ph="..." />
+>>>>>>> d11084b9394056c4c910b4f4d3dea7d1ed0e0e2a
           </folding>
         </state>
       </provider>

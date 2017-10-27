@@ -2,16 +2,16 @@
 
 Prepared as a training before creating a proper application.
 
+
 ## Running the application
 
 ### Prerequisites
 
-Make sure you have installed **Python 3.6**, **pip3** and **django**. In case you haven't, run the below commands.
+Make sure you have installed **Python 3.6**, **pip3**, **django**, **nodejs** and **npm**. In case you haven't, run the commands below.
 
 **For Ubuntu Linux:**
 ```
-apt-get install python3
-apt-get install python3-pip
+apt-get install python3 python3-pip nodejs npm
 pip3 install django
 ```
 
@@ -19,6 +19,22 @@ Go to the directory where you would like to download the projects.
 ```
 git clone git@github.com:barlima/pathfinder_leaflet.git
 ```
+
+
+### Required repositories
+
+Clone the [OSRM](https://github.com/Project-OSRM/osrm-backend) repository to your working directory and [build it from source](https://github.com/Project-OSRM/osrm-backend#building-from-source).
+
+Make sure that **NodeJS** and **npm** have been installed successfully.
+Install [Leaflet Routing Machine](https://github.com/Project-OSRM/osrm-backend#building-from-source) package and connect it with the **pathfinder_leaflet** application.
+
+At the end you should have a directory structure looking like this:
+```
+Working directory:
+- pathfinder_leaflet/static/node_modules/leaflet_routing_machine
+- osrm-backend
+```
+
 
 ### Setup static folder location
 
@@ -36,7 +52,8 @@ STATICFILES_DIRS = [
 ]
 ```
 
-### Run the server
+
+## Run the server
 
 Go to **pathfinder_leaflet** dir and run:
 ```
