@@ -43,6 +43,7 @@
         {% endfor %}
 
         L.Routing.control({
+            serviceUrl: 'http://127.0.0.1:5000/route/v1',
             waypoints: [
                 L.latLng({{ beginPoint.latitude }}, {{ beginPoint.longitude }}),
                 L.latLng({{ endPoint.latitude }}, {{ endPoint.longitude }})

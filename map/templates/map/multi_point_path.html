@@ -26,8 +26,28 @@
         </form>
     </div>
 
-
-    <div class="map" id="map"></div>
+    <table>
+        <tr>
+            <th>
+                <br>
+                <p>Distance between points:</p>
+                <div id="routeData">
+                    {% for middlePoint in middlePoints %}
+                        {% if forloop.first %}
+                            {{ middlePoint.name }} -
+                        {% elif forloop.last %}
+                            {{ middlePoint.name }}:
+                        {% else %}
+                            {{ middlePoint.name }}:<br>{{ middlePoint.name }} -
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </th>
+            <th>
+                <div class="map" id="map"></div>
+            </th>
+        </tr>
+    </table>
 
     <!-- Leaflet script -->
     <script type="text/javascript">
@@ -76,7 +96,8 @@
         {% endfor %}
 
         // Draw selected paths
-        L.Routing.control({
+        var route = L.Routing.control({
+            serviceUrl: 'http://127.0.0.1:5000/route/v1',
             waypoints: [
                 {% for middlePoint in middlePoints %}
                     L.latLng({{ middlePoint.latitude }}, {{ middlePoint.longitude }}),
@@ -85,6 +106,17 @@
             routeWhileDragging: true,
             show: false
         }).addTo(map);
+
+        var router = route.getRouter();
+        var distance = router.summary.totalDistance;
+        var time = router.summary.totalTime;
+
+        // Comment the content of div (id="routeData") and add the bolow line
+        /* setTimeAndDistance(A, B, distance, time); // where A is begin point, B is end point
+
+        // put the above commented section to the loop
+        // consider changing form from django to js...
+        */
 
     </script>
 
