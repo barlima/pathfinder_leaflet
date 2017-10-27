@@ -97,6 +97,7 @@
         // Draw selected paths
         // var route =
         L.Routing.control({
+            serviceUrl: 'http://127.0.0.1:5000/route/v1',
             waypoints: [
                 {% for middlePoint in middlePoints %}
                     L.latLng({{ middlePoint.latitude }}, {{ middlePoint.longitude }}),
