@@ -23,11 +23,12 @@ git clone git@github.com:barlima/pathfinder_leaflet.git
 
 ### Required repositories
 
-Clone two more repositories to your working directory:
-- [OSRM backend](https://github.com/barlima/osrm-backend)
-- [Leaflet Routing Machine](https://github.com/barlima/leaflet-routing-machine)
+Clone the [OSRM](https://github.com/Project-OSRM/osrm-backend) repository to your working directory and [build for source](https://github.com/Project-OSRM/osrm-backend#building-from-source).
 
-At the end you should have a directory structure like this:
+Make sure that **NodeJS** and **npm** have been installed successfully.
+Install [Leaflet Routing Machine](https://github.com/Project-OSRM/osrm-backend#building-from-source) package and connect it with the **pathfinder_leaflet** application.
+
+At the end you should have a directory structure looking like this:
 ```
 Working directory:
 - pathfinder_leaflet/static/node_modules/leaflet_routing_machine
