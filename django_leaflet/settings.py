@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'map',
     'points',
+    'trips',
 
     'django.contrib.admin',
     'django.contrib.auth',
