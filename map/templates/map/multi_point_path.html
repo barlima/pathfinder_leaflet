@@ -6,6 +6,7 @@
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script src="{% static 'js/map.js' %}"></script>
     <script type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -96,7 +97,7 @@
         {% endfor %}
 
         // Draw selected paths
-        var route = L.Routing.control({
+        var routingControl = L.Routing.control({
             serviceUrl: 'http://127.0.0.1:5000/route/v1',
             waypoints: [
                 {% for middlePoint in middlePoints %}
@@ -107,16 +108,13 @@
             show: false
         }).addTo(map);
 
-        var router = route.getRouter();
-        var distance = router.summary.totalDistance;
-        var time = router.summary.totalTime;
 
-        // Comment the content of div (id="routeData") and add the bolow line
-        /* setTimeAndDistance(A, B, distance, time); // where A is begin point, B is end point
-
-        // put the above commented section to the loop
-        // consider changing form from django to js...
-        */
+        routingControl.on('routesfound', function (e) {
+            var route = e.routes[0];
+            var distance = route.summary.totalDistance;
+            var time = route.summary.totalTime;
+            setTimeAndDistance('A', 'B', distance, time); // where A is begin point, B is end point
+        });
 
     </script>
 

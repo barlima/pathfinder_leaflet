@@ -3,7 +3,7 @@ function setTimeAndDistance(point_A, point_B, distance, time) {
     var paragraph = document.createElement('p');
     var node = document.createTextNode(
                             '(' + point_A + ', ' + point_B + ')' +
-                            '\nDistance: ' + distance +
+                            'Distance: ' + distance +
                             ', \n' + time);
 
     paragraph.appendChild(node);
