@@ -27,28 +27,20 @@
         </form>
     </div>
 
-    <table>
-        <tr>
-            <th>
-                <br>
-                <p>Distance between points:</p>
-                <div id="routeData">
-                    {% for middlePoint in middlePoints %}
-                        {% if forloop.first %}
-                            {{ middlePoint.name }} -
-                        {% elif forloop.last %}
-                            {{ middlePoint.name }}:
-                        {% else %}
-                            {{ middlePoint.name }}:<br>{{ middlePoint.name }} -
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </th>
-            <th>
-                <div class="map" id="map"></div>
-            </th>
-        </tr>
-    </table>
+    <div id="routeData">
+{#        <p>Distance between points:</p>#}
+{#        {% for middlePoint in middlePoints %}#}
+{#            {% if forloop.first %}#}
+{#                {{ middlePoint.name }} -#}
+{#            {% elif forloop.last %}#}
+{#                {{ middlePoint.name }}:#}
+{#            {% else %}#}
+{#                {{ middlePoint.name }}:<br>{{ middlePoint.name }} -#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+    </div>
+
+    <div class="map" id="map"></div>
 
     <!-- Leaflet script -->
     <script type="text/javascript">
@@ -108,12 +100,13 @@
             show: false
         }).addTo(map);
 
-
+        // Display distance and estimated time
         routingControl.on('routesfound', function (e) {
-            var route = e.routes[0];
-            var distance = route.summary.totalDistance;
-            var time = route.summary.totalTime;
-            setTimeAndDistance('A', 'B', distance, time); // where A is begin point, B is end point
+            var total_route = e.routes[0];
+            var total_distance = total_route.summary.totalDistance;
+            var total_time = total_route.summary.totalTime;
+            // debugger;
+            getTimeAndDistance(total_distance, total_time)
         });
 
     </script>

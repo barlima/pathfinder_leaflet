@@ -1,10 +1,10 @@
 // Display route data on the left hand side from the map
-function setTimeAndDistance(point_A, point_B, distance, time) {
+function getTimeAndDistance(distance, time) {
     var paragraph = document.createElement('p');
-    var node = document.createTextNode(
-                            '(' + point_A + ', ' + point_B + ')' +
-                            'Distance: ' + distance +
-                            ', \n' + time);
+    var node = document.createTextNode('Distance: ' + distance + 'm in ' +
+                                        parseInt(time/3600) + ':' +
+                                        parseInt(time/60%60) + ',' +
+                                        parseInt(time%60));
 
     paragraph.appendChild(node);
 

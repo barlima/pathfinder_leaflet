@@ -44,7 +44,8 @@ def multi_point_path(request):
                     middle_points.append(Point.objects.get(name=form['extra_points_{ep}'.format(ep=extra_point)].value()))
                 except:
                     # ToDo: Inform user about invalid input in case input is not empty
-                    print(form['extra_points_{ep}'.format(ep=extra_point)].value())
+                    # print(form['extra_points_{ep}'.format(ep=extra_point)].value())
+                    pass
 
     context = {
         'form': form,
