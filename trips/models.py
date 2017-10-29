@@ -26,4 +26,4 @@ class PointsOfInterest(models.Model):
         return json.loads(self.points)
 
     def __str__(self):
-        return 'Points of interest'
+        return 'Points of trip %s' % self.trip.name

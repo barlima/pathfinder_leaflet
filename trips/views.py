@@ -90,7 +90,7 @@ def new(request):
 
             print('POINT FORM IS VALID')
 
-            if trip_form.is_valid():
+            if trip_form.is_valid() and not ('add' in request.POST or 'clear' in request.POST):
                 print('TRIP FORM IS VALID')
 
                 trip = trip_form.save()
