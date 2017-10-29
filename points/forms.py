@@ -34,7 +34,7 @@ class PointForm(forms.Form):
 
     extra_points_count = forms.CharField(widget=forms.HiddenInput())
 
-    # Add new field of when '+' is clicked
+    # Add a new field of when '+' is clicked
     def __init__(self, *args, **kwargs):
         extra_fields = kwargs.pop('extra', 0)
 

@@ -9,7 +9,9 @@ class Trip(models.Model):
     name = models.CharField(max_length=20)
     start_date = models.DateField()
     end_date = models.DateField()
-    # ToDo: Add field which contains all of the users points
+
+    def __str__(self):
+        return "%s (%s - %s)" % (self.name, self.start_date, self.end_date)
 
 
 class PointsOfInterest(models.Model):
@@ -22,3 +24,6 @@ class PointsOfInterest(models.Model):
 
     def get_points(self):
         return json.loads(self.points)
+
+    def __str__(self):
+        return 'Points of interest'

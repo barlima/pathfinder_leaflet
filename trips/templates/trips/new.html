@@ -1,7 +1,52 @@
 {% extends 'map/base.html' %}
 
 {% block content %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <h2>
-        New Trip
+        New Trip:
     </h2>
+
+    <form action="{% url 'trips:new' %}" method="post">
+        {% csrf_token %}
+        <div id="trip-form">
+            {% for field in trip_form %}
+                {{ field.label }}: <br>
+                {{ field }} <br>
+            {% endfor %}
+        </div>
+        <div id="points-form">
+            {% for field in points_form %}
+                {{ field.label }}: <br>
+                {{ field }} <br>
+            {% endfor %}
+        </div>
+        <button name="submit">Save</button>
+        <button id="add-point">&#10010;</button>
+        <button id="clear-points">Clear</button>
+    </form>
+
+    <!-- Adding fields for more stops -->
+    <script>
+        form_count = Number($("[name=extra_points_count]").val());
+        // get extra sets count so we know what index to use for the next item.
+        $("#add-point").click(function() {
+            form_count ++;
+
+            $("[name=extra_points_count]").val(form_count);
+        });
+
+        $("#clear-points").click(function () {
+            form_count = 1;
+            $("[name=extra_points_count]").val(form_count);
+        });
+
+        $("#remove-point").click(function () {
+            form_count --;
+            $("[name=extra_points_count]").val(form_count);
+        });
+
+    </script>
+
 {% endblock content %}
