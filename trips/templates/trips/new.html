@@ -1,8 +1,11 @@
 {% extends 'map/base.html' %}
+{% load static %}
+
 
 {% block content %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script type="text/javascript"></script>
 
     <h2>
         New Trip:
@@ -46,6 +49,40 @@
             form_count --;
             $("[name=extra_points_count]").val(form_count);
         });
+
+    </script>
+
+    <!-- Display map -->
+    <div class="map" id="map"></div>
+
+    <script type="text/javascript">
+
+        var map = L.map('map').setView([42.35, -71.08], 13);
+
+        L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+             attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+             maxZoom: 17,
+             minZoom: 9
+        }).addTo(map);
+
+        function onMapClick(e) {
+            var gj = L.geoJSON().addTo(map);
+
+            var gjFearute ={
+                "type": "Feature",
+                "properties": {
+                    "name": "Clicked"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [e.latlng.lng, e.latlng.lat]
+                }
+            };
+
+            gj.addData(gjFearute);
+        }
+
+        map.on('click', onMapClick);
 
     </script>
 

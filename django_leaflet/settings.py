@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'map',
     'points',
     'trips',
+    'geojson',
 
     'django.contrib.admin',
     'django.contrib.auth',

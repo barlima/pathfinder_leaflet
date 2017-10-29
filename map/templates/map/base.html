@@ -5,7 +5,14 @@
   <head>
     <meta charset="utf-8">
     <title>Map Routing</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+    crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css' %}" />
     <style media="screen">
       .map {
@@ -30,6 +37,9 @@
     </small> |
     <small>
         <a href="{% url 'trips:index' %}">Trips</a>
+    </small> |
+    <small>
+        <a href="{% url 'geojson:index' %}">GeoJSON</a>
     </small>
     <h1>Leaflet in Django!</h1>
 
