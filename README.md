@@ -11,13 +11,13 @@ Make sure you have installed **Python 3.6**, **pip3**, **django**, **nodejs** an
 
 **For Ubuntu Linux:**
 ```
-apt-get install python3 python3-pip nodejs npm
-pip3 install django
+$ apt-get install python3 python3-pip nodejs npm
+$ pip3 install django
 ```
 
 Go to the directory where you would like to download the projects.
 ```
-git clone git@github.com:barlima/pathfinder_leaflet.git
+$ git clone git@github.com:barlima/pathfinder_leaflet.git
 ```
 
 
@@ -41,8 +41,8 @@ Working directory:
 Add full path of static folder location to **django_leaflet/settings.py**.
 
 ```shell
-cd pathfinder_leaflet/static
-pwd
+$ cd pathfinder_leaflet/static
+$ pwd
 ```
 Copy the result and paste it to **settings.py**
 ```
@@ -57,7 +57,7 @@ STATICFILES_DIRS = [
 
 Go to **pathfinder_leaflet** dir and run:
 ```shell
-python3 manage.py runserver
+$ python3 manage.py runserver
 ```
 
 To check if the application is working properly go to [127.0.0.1:8000/map](htto://127.0.0.1:8000/map).
