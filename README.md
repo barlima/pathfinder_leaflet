@@ -40,7 +40,7 @@ Working directory:
 
 Add full path of static folder location to **django_leaflet/settings.py**.
 
-```
+```shell
 cd pathfinder_leaflet/static
 pwd
 ```
@@ -56,7 +56,7 @@ STATICFILES_DIRS = [
 ## Run the server
 
 Go to **pathfinder_leaflet** dir and run:
-```
+```shell
 python3 manage.py runserver
 ```
 
