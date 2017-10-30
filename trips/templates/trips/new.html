@@ -15,13 +15,15 @@
         {% csrf_token %}
         <div id="trip-form">
             {% for field in trip_form %}
-                {{ field.label }}: <br>
-                {{ field }} <br>
+                    {{ field.label }}: <br>
+                    {{ field }} <br>
             {% endfor %}
         </div>
         <div id="points-form">
             {% for field in points_form %}
-                {{ field.label }}: <br>
+                {% if 'count' not in field.label %}
+                    {{ field.label }}: <br>
+                {% endif %}
                 {{ field }} <br>
             {% endfor %}
         </div>
@@ -41,7 +43,7 @@
         });
 
         $("#clear-points").click(function () {
-            form_count = 1;
+            form_count = 0;
             $("[name=extra_points_count]").val(form_count);
         });
 
@@ -80,6 +82,33 @@
             };
 
             gj.addData(gjFearute);
+
+            var isAssignedToAnInput = false;
+            {% for extra_field in extra_fields_number %}
+                var value = document.getElementById('id_extra_points_{{ extra_field }}').value;
+                if (value.length == 0 && !isAssignedToAnInput) {
+                    document.getElementById('id_extra_points_{{ extra_field }}').value =
+                        '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
+                    isAssignedToAnInput = true;
+                }
+            {% endfor %}
+
+            if (!isAssignedToAnInput) {
+                form_count ++;
+                $("[name=extra_points_count]").val(form_count);
+                // ToDo: Add refreshing statement, so the user could see new fields
+                var container = document.getElementById("points-form");
+                container.appendChild(document.createTextNode("Extra points " + form_count));
+                container.appendChild(document.createElement("br"));
+                var input = document.createElement("input");
+                input.type = "text";
+                input.name = "extra_points_" + form_count;
+                input.id = "id_extra_points_" + form_count;
+                input.value = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
+                container.appendChild(input);
+                container.appendChild(document.createElement("br"));
+            }
+            
         }
 
         map.on('click', onMapClick);

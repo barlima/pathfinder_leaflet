@@ -13,56 +13,13 @@ def index(request):
     return render(request, 'trips/index.html', context)
 
 
-def new_trip(request):
-    if request.method != 'POST':
-        trip_form = TripForm()
-
-    else:
-        trip_form = TripForm(request.POST)
-
-        if trip_form.is_valid():
-            trip = trip_form.save()
-            print(trip.id)
-            return HttpResponseRedirect(reverse("trips:new_trip_data", args=[trip.id]))
-
-    context = {
-        'trip_form': trip_form,
-    }
-
-    return render(request, 'trips/new_trip.html', context)
-
-
-def new_trip_data(request, trip_id):
-    trip = Trip.objects.get(id=trip_id)
-
-    if request.method != 'POST':
-        points_form = PointsOfInterestModelForm()
-    else:
-        points_form = PointsOfInterestModelForm(request.POST)
-        print(points_form)
-
-        if points_form.is_valid():
-            new_points_set = points_form.save(commit=False)
-            new_points_set.trip = trip
-            new_points_set.save()
-            print(new_points_set)
-            return HttpResponseRedirect(reverse('trips:new_trip'))
-
-    context = {
-        'points_form': points_form,
-        'trip': trip
-    }
-
-    return render(request, 'trips/new_trip_data.html', context)
-
-
 def new(request):
     middle_points = []
+    extra_point_number = 0
 
     if request.method != 'POST':
         trip_form = TripForm()
         points_form = PointsOfInterestForm(extra=0)
-        print(points_form['extra_points_count'])
     else:
         extra_point_number = request.POST.get('extra_points_count')
 
@@ -105,7 +62,9 @@ def new(request):
 
     context = {
         'trip_form': trip_form,
-        'points_form': points_form
+        'points_form': points_form,
+        'middle_points': middle_points,
+        'extra_fields_number': range(int(extra_point_number))
     }
 
     return render(request, 'trips/new.html', context)
