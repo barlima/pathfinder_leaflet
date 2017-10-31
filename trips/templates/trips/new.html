@@ -5,6 +5,7 @@
 {% block content %}
 
     <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script src="{% static 'js/map.js' %}"></script>
     <script type="text/javascript"></script>
 
     <h2>
@@ -27,18 +28,21 @@
                 {{ field }} <br>
             {% endfor %}
         </div>
-        <button name="submit">Save</button>
+        <br>
+        <button id="save" name="submit">Save</button>
         <button id="add-point" name="add">&#10010;</button>
         <button id="clear-points" name="clear">Clear</button>
     </form>
+
+    <!-- Display map -->
+    <div class="map" id="map"></div>
 
     <!-- Adding fields for more stops -->
     <script>
         form_count = Number($("[name=extra_points_count]").val());
         // get extra sets count so we know what index to use for the next item.
-        $("#add-point").click(function() {
-            form_count ++;
-
+        $("#add-point").click(function(e) {
+            form_count++;
             $("[name=extra_points_count]").val(form_count);
         });
 
@@ -48,16 +52,14 @@
         });
 
         $("#remove-point").click(function () {
-            form_count --;
+            form_count--;
             $("[name=extra_points_count]").val(form_count);
         });
 
-    </script>
-
-    <!-- Display map -->
-    <div class="map" id="map"></div>
-
-    <script type="text/javascript">
+        $("#save").click(function () {
+            $("[name=extra_points_count]").val(form_count);
+            countDistances('[AAAA]');
+        });
 
         var map = L.map('map').setView([42.35, -71.08], 13);
 
@@ -68,6 +70,7 @@
         }).addTo(map);
 
         function onMapClick(e) {
+            var coordinates = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
             var gj = L.geoJSON().addTo(map);
 
             var gjFearute ={
@@ -84,31 +87,29 @@
             gj.addData(gjFearute);
 
             var isAssignedToAnInput = false;
-            {% for extra_field in extra_fields_number %}
-                var value = document.getElementById('id_extra_points_{{ extra_field }}').value;
-                if (value.length == 0 && !isAssignedToAnInput) {
-                    document.getElementById('id_extra_points_{{ extra_field }}').value =
-                        '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
-                    isAssignedToAnInput = true;
-                }
-            {% endfor %}
+
+            if (document.getElementById('id_begin_point').value.length == 0) {
+                document.getElementById('id_begin_point').value = coordinates;
+                isAssignedToAnInput = true;
+            }
+            else if (document.getElementById('id_end_point').value.length == 0){
+                document.getElementById('id_end_point').value = coordinates;
+                isAssignedToAnInput = true;
+            }
+            else {
+                {% for extra_field in extra_fields_number %}
+                    var value = document.getElementById('id_extra_points_{{ extra_field }}').value;
+                    if (value.length == 0 && !isAssignedToAnInput) {
+                        document.getElementById('id_extra_points_{{ extra_field }}').value = coordinates;
+                        isAssignedToAnInput = true;
+                    }
+                {% endfor %}
+            }
 
             if (!isAssignedToAnInput) {
-                form_count ++;
-                $("[name=extra_points_count]").val(form_count);
-                // ToDo: Add refreshing statement, so the user could see new fields
-                var container = document.getElementById("points-form");
-                container.appendChild(document.createTextNode("Extra points " + form_count));
-                container.appendChild(document.createElement("br"));
-                var input = document.createElement("input");
-                input.type = "text";
-                input.name = "extra_points_" + form_count;
-                input.id = "id_extra_points_" + form_count;
-                input.value = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
-                container.appendChild(input);
-                container.appendChild(document.createElement("br"));
+                addMiddlePoint(form_count,coordinates);
+                form_count++;
             }
-            
         }
 
         map.on('click', onMapClick);

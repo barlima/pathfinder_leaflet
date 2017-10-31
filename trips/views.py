@@ -23,27 +23,24 @@ def new(request):
     else:
         extra_point_number = request.POST.get('extra_points_count')
 
+        print(extra_point_number)
+
         trip_form = TripForm(request.POST)
         points_form = PointsOfInterestForm(request.POST, extra=extra_point_number)
 
         if points_form.is_valid():
-            middle_points.append(Point.objects.get(name=points_form['begin_point'].value()))
 
-            for extra_point in range(int(extra_point_number)):
-                try:
-                    middle_points.append(
-                        Point.objects.get(name=points_form['extra_points_{ep}'.format(ep=extra_point)].value()))
-                except:
-                    # ToDo: Inform user about invalid input in case input is not empty
-                    # print(form['extra_points_{ep}'.format(ep=extra_point)].value())
-                    pass
+            try:
+                middle_points.append(points_form['begin_point'].value())
 
-            middle_points.append(Point.objects.get(name=points_form['end_point'].value()))
+                for extra_point in range(int(extra_point_number)):
+                    middle_points.append(points_form['extra_points_{ep}'.format(ep=extra_point)].value())
 
-            points_coordinates = []
-
-            for point in middle_points:
-                points_coordinates.append([point.latitude, point.longitude])
+                middle_points.append(points_form['end_point'].value())
+            except:
+                # ToDo: Inform user about invalid input in case input is not empty
+                # print(form['extra_points_{ep}'.format(ep=extra_point)].value())
+                pass
 
             print('POINT FORM IS VALID')
 
@@ -57,7 +54,7 @@ def new(request):
 
                 new_points_set = points_model_form.save(commit=False)
                 new_points_set.trip = trip
-                new_points_set.points = json.dumps(points_coordinates)
+                new_points_set.points = json.dumps(middle_points)
                 new_points_set.save()
 
     context = {
