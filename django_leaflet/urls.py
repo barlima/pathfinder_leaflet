@@ -19,4 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^map/', include('map.urls', namespace='map')),
+    url(r'^trip/', include('trips.urls', namespace='trips')),
+    url(r'^geojson/', include('geojson.urls', namespace='geojson')),
 ]

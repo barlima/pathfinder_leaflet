@@ -1,0 +1,125 @@
+{% extends 'map/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script src="{% static 'js/map.js' %}"></script>
+    <script type="text/javascript"></script>
+
+    <h2>
+        New Trip:
+    </h2>
+
+    <form action="{% url 'trips:new' %}" method="post">
+        {% csrf_token %}
+        <div id="trip-form">
+            {% for field in trip_form %}
+                    {{ field.label }}: <br>
+                    {{ field }} <br>
+            {% endfor %}
+        </div>
+        <div id="points-form">
+            {% for field in points_form %}
+                {% if 'count' not in field.label %}
+                    {{ field.label }}: <br>
+                {% endif %}
+                {{ field }} <br>
+            {% endfor %}
+        </div>
+        <br>
+        <button id="save" name="submit">Save</button>
+{# ToDo: Move this two buttos out of this form #}
+        <button id="add-point" name="add">&#10010;</button>
+        <button id="clear-points" name="clear">Clear</button>
+    </form>
+
+    <!-- Display map -->
+    <div class="map" id="map"></div>
+
+    <!-- Adding fields for more stops -->
+    <script>
+        var selectedPoints = [];
+        var formCount = Number($("[name=extra_points_count]").val());
+        // get extra sets count so we know what index to use for the next item.
+        $("#add-point").click(function(e) {
+            formCount++;
+            $("[name=extra_points_count]").val(formCount);
+        });
+
+        $("#clear-points").click(function () {
+            formCount = 0;
+            $("[name=extra_points_count]").val(formCount);
+            $("[id=id_begin_point]").val('');
+            $("[id=id_end_point]").val('');
+        });
+
+        $("#remove-point").click(function () {
+            formCount--;
+            $("[name=extra_points_count]").val(formCount);
+        });
+
+        $("#save").click(function () {
+            $("[name=extra_points_count]").val(formCount);
+            countDistances(selectedPoints);
+        });
+
+        var map = L.map('map').setView([42.35, -71.08], 13);
+
+        L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+             attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+             maxZoom: 17,
+             minZoom: 9
+        }).addTo(map);
+
+        function onMapClick(e) {
+            var coordinates = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
+            selectedPoints.push([ e.latlng.lat, e.latlng.lng ]);
+
+            var gj = L.geoJSON().addTo(map);
+
+            var gjFearute ={
+                "type": "Feature",
+                "properties": {
+                    "name": "Clicked"
+                },
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [e.latlng.lng, e.latlng.lat]
+                }
+            };
+
+            gj.addData(gjFearute);
+
+            var isAssignedToAnInput = false;
+
+            if (document.getElementById('id_begin_point').value.length == 0) {
+                document.getElementById('id_begin_point').value = coordinates;
+                isAssignedToAnInput = true;
+            }
+            else if (document.getElementById('id_end_point').value.length == 0){
+                document.getElementById('id_end_point').value = coordinates;
+                isAssignedToAnInput = true;
+            }
+            else {
+                {% for extra_field in extra_fields_number %}
+                    var value = document.getElementById('id_extra_points_{{ extra_field }}').value;
+                    if (value.length == 0 && !isAssignedToAnInput) {
+                        document.getElementById('id_extra_points_{{ extra_field }}').value = coordinates;
+                        isAssignedToAnInput = true;
+                    }
+                {% endfor %}
+            }
+
+            if (!isAssignedToAnInput) {
+                addMiddlePoint(formCount,coordinates);
+                formCount++;
+            }
+        }
+
+        map.on('click', onMapClick);
+
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'map/base.html' %}
+
+{% block content %}
+
+    <h2>
+        Prepare your holidays with our application!
+    </h2>
+
+    <p>
+        All you have to do is to select your point of destination, dates and points of interest.
+    </p>
+
+    <form action="{% url 'trips:new' %}" method="get">
+         {% csrf_token %}
+        <button name="submit">Start</button>
+    </form>
+
+{% endblock content %}
