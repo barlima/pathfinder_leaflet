@@ -23,8 +23,6 @@ def new(request):
     else:
         extra_point_number = request.POST.get('extra_points_count')
 
-        print(extra_point_number)
-
         trip_form = TripForm(request.POST)
         points_form = PointsOfInterestForm(request.POST, extra=extra_point_number)
 

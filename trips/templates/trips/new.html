@@ -30,6 +30,7 @@
         </div>
         <br>
         <button id="save" name="submit">Save</button>
+{# ToDo: Move this two buttos out of this form #}
         <button id="add-point" name="add">&#10010;</button>
         <button id="clear-points" name="clear">Clear</button>
     </form>
@@ -39,26 +40,29 @@
 
     <!-- Adding fields for more stops -->
     <script>
-        form_count = Number($("[name=extra_points_count]").val());
+        var selectedPoints = [];
+        var formCount = Number($("[name=extra_points_count]").val());
         // get extra sets count so we know what index to use for the next item.
         $("#add-point").click(function(e) {
-            form_count++;
-            $("[name=extra_points_count]").val(form_count);
+            formCount++;
+            $("[name=extra_points_count]").val(formCount);
         });
 
         $("#clear-points").click(function () {
-            form_count = 0;
-            $("[name=extra_points_count]").val(form_count);
+            formCount = 0;
+            $("[name=extra_points_count]").val(formCount);
+            $("[id=id_begin_point]").val('');
+            $("[id=id_end_point]").val('');
         });
 
         $("#remove-point").click(function () {
-            form_count--;
-            $("[name=extra_points_count]").val(form_count);
+            formCount--;
+            $("[name=extra_points_count]").val(formCount);
         });
 
         $("#save").click(function () {
-            $("[name=extra_points_count]").val(form_count);
-            countDistances('[AAAA]');
+            $("[name=extra_points_count]").val(formCount);
+            countDistances(selectedPoints);
         });
 
         var map = L.map('map').setView([42.35, -71.08], 13);
@@ -71,6 +75,8 @@
 
         function onMapClick(e) {
             var coordinates = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
+            selectedPoints.push([ e.latlng.lat, e.latlng.lng ]);
+
             var gj = L.geoJSON().addTo(map);
 
             var gjFearute ={
@@ -107,8 +113,8 @@
             }
 
             if (!isAssignedToAnInput) {
-                addMiddlePoint(form_count,coordinates);
-                form_count++;
+                addMiddlePoint(formCount,coordinates);
+                formCount++;
             }
         }
 

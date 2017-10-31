@@ -28,6 +28,6 @@ function addMiddlePoint(id, value) {
     container.appendChild(document.createElement("br"));
 }
 
-function countDistances(json) {
+function countDistances(selectedPoints) {
     debugger;
 }

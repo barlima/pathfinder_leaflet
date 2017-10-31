@@ -37,8 +37,8 @@ class PointsOfInterestForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.fields['extra_points_count'].initial = extra_fields
 
-        self.fields['begin_point'] = forms.CharField()
-        self.fields['end_point'] = forms.CharField()
+        self.fields['begin_point'] = forms.CharField(required=False)
+        self.fields['end_point'] = forms.CharField(required=False)
 
         for i in range(int(extra_fields)):
             # Not sure if this should be here
