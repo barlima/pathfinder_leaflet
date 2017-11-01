@@ -14,20 +14,50 @@ function getTimeAndDistance(distance, time) {
 
 // Add middle point by clicking on button
 function addMiddlePoint(id, value) {
-    var container = document.getElementById("points-form");
-                container.appendChild(document.createTextNode("Extra points " + id));
-                container.appendChild(document.createElement("br"));
+    var container = document.getElementById("extra-points");
+
+    var text = document.createElement("SMALL");
+    text.appendChild(document.createTextNode("Extra points " + id));
+    text.id = "extra_points_text_" + id;
+    container.appendChild(text);
+
+    container.appendChild(document.createElement("br"));
 
     var input = document.createElement("input");
                 input.type = "text";
                 input.name = "extra_points_" + id;
                 input.id = "id_extra_points_" + id;
-                input.value = value;
+                if (value) {
+                    input.value = value;
+                }
 
     container.appendChild(input);
     container.appendChild(document.createElement("br"));
 }
 
-function countDistances(selectedPoints) {
-    debugger;
+
+function countDistances(A, B) {
+
+    var routes = {};
+
+    var routingControl = L.Routing.control({
+        serviceUrl: 'http://127.0.0.1:5000/route/v1',
+        waypoints: [
+            L.latLng([selectedPoints[A][0], selectedPoints[A][1]]),
+            L.latLng([selectedPoints[B][0], selectedPoints[B][1]])
+        ],
+        routeWhileDragging: true,
+        show: false
+    });
+
+    routingControl.on('routesfound', function (e) {
+        var total_route = e.routes[0];
+        var total_distance = total_route.summary.totalDistance;
+        var total_time = total_route.summary.totalTime;
+
+        var value = A + "/" + B + "/" + total_distance + ":";
+
+        // $("[id=distances]").val($("[id=distances]").val() + total_distance + ', ');
+        $("[id=distance]").val($("[id=distance]").val() + value);
+    });
 }

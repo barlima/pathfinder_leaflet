@@ -59,52 +59,10 @@ def new(request):
         'trip_form': trip_form,
         'points_form': points_form,
         'middle_points': middle_points,
+        'all_points_range': range(len(middle_points)),
         'extra_fields_number': range(int(extra_point_number))
     }
 
     return render(request, 'trips/new.html', context)
-
-
-
-
-    #
-    # print(trip)
-    #
-    #
-    # if request.method != 'POST':
-    #     points_form = PointsOfInterestForm(extra=0)
-    #
-    # else:
-    #     points_model_form = PointsOfInterestModelForm(request.POST)
-    #
-    #     extra_point_number = request.POST.get('extra_points_count')
-    #
-    #     points_form = PointsOfInterestForm(request.POST, extra=extra_point_number)
-    #
-    #     if points_form.is_valid():
-    #         middle_points.append(Point.objects.get(name=points_form['begin_point'].value()))
-    #
-    #         for extra_point in range(int(extra_point_number)):
-    #             try:
-    #                 middle_points.append(
-    #                     Point.objects.get(name=points_form['extra_points_{ep}'.format(ep=extra_point)].value()))
-    #             except:
-    #                 # ToDo: Inform user about invalid input in case input is not empty
-    #                 # print(form['extra_points_{ep}'.format(ep=extra_point)].value())
-    #                 pass
-    #
-    #         middle_points.append(Point.objects.get(name=points_form['end_point'].value()))
-    #         points_coordinates = []
-    #
-    #         for point in middle_points:
-    #             points_coordinates.append([point.latitude, point.longitude])
-    #
-    #         points_model_form['points'] = json.dumps(points_coordinates)
-    #         points_model_form['trip'] = trip
-    #
-    #         print(points_model_form)
-    #
-    #         if points_model_form.is_valid():
-    #             points_model_form.save()
 
 

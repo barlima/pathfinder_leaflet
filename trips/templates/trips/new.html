@@ -16,24 +16,36 @@
         {% csrf_token %}
         <div id="trip-form">
             {% for field in trip_form %}
-                    {{ field.label }}: <br>
-                    {{ field }} <br>
+                <small>{{ field.label }}:</small> <br>
+                {{ field }} <br>
             {% endfor %}
         </div>
         <div id="points-form">
             {% for field in points_form %}
                 {% if 'count' not in field.label %}
-                    {{ field.label }}: <br>
+                    <small>{{ field.label }}:</small> <br>
                 {% endif %}
                 {{ field }} <br>
             {% endfor %}
+        <div id="extra-points"></div>
         </div>
+{#  ToDO: Maybe we should move content of the extra points to other div? That will remove <br> as well#}
+
+
         <br>
         <button id="save" name="submit">Save</button>
-{# ToDo: Move this two buttos out of this form #}
-        <button id="add-point" name="add">&#10010;</button>
-        <button id="clear-points" name="clear">Clear</button>
     </form>
+
+    <button id="add-point" name="add">&#10010;</button>
+    <button id="clear-points" name="clear">Clear</button>
+{#    <button id="count" name="count">Count</button>#}
+
+{#  TEMP  #}
+{#    <br>Distances<br><input name="distances" id="distances">#}
+{#  TEMP  #}
+
+{#  Distance hidden input  #}
+    <br><input type="hidden" name="distance" id="distance">
 
     <!-- Display map -->
     <div class="map" id="map"></div>
@@ -44,8 +56,10 @@
         var formCount = Number($("[name=extra_points_count]").val());
         // get extra sets count so we know what index to use for the next item.
         $("#add-point").click(function(e) {
+            addMiddlePoint(formCount, null);
             formCount++;
             $("[name=extra_points_count]").val(formCount);
+
         });
 
         $("#clear-points").click(function () {
@@ -53,6 +67,8 @@
             $("[name=extra_points_count]").val(formCount);
             $("[id=id_begin_point]").val('');
             $("[id=id_end_point]").val('');
+            document.getElementById("extra-points").innerHTML = '';
+            geoJsonGroup.clearLayers();
         });
 
         $("#remove-point").click(function () {
@@ -62,10 +78,21 @@
 
         $("#save").click(function () {
             $("[name=extra_points_count]").val(formCount);
-            countDistances(selectedPoints);
+{#            countDistances(selectedPoints);#}
+        });
+
+        $("#count").click(function () {
+            for (var i = 0; i < selectedPoints.length; i++){
+                for (var j = i; j < selectedPoints.length; j++){
+                    if (j != i) {
+                        countDistances(i, j);
+                    }
+                }
+            }
         });
 
         var map = L.map('map').setView([42.35, -71.08], 13);
+        var geoJsonGroup = L.geoJSON().addTo(map);
 
         L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
              attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
@@ -77,7 +104,7 @@
             var coordinates = '[' + e.latlng.lat + ', ' + e.latlng.lng+ ']';
             selectedPoints.push([ e.latlng.lat, e.latlng.lng ]);
 
-            var gj = L.geoJSON().addTo(map);
+
 
             var gjFearute ={
                 "type": "Feature",
@@ -90,7 +117,7 @@
                 }
             };
 
-            gj.addData(gjFearute);
+            geoJsonGroup.addData(gjFearute);
 
             var isAssignedToAnInput = false;
 
@@ -103,13 +130,15 @@
                 isAssignedToAnInput = true;
             }
             else {
-                {% for extra_field in extra_fields_number %}
-                    var value = document.getElementById('id_extra_points_{{ extra_field }}').value;
+{#                {% for extra_field in extra_fields_number %}#}
+                for(var id = 0; id < formCount; id++ ){
+                    var value = document.getElementById('id_extra_points_' + id).value;
                     if (value.length == 0 && !isAssignedToAnInput) {
-                        document.getElementById('id_extra_points_{{ extra_field }}').value = coordinates;
+                        document.getElementById('id_extra_points_'  + id).value = coordinates;
                         isAssignedToAnInput = true;
                     }
-                {% endfor %}
+                }
+{#                {% endfor %}#}
             }
 
             if (!isAssignedToAnInput) {
@@ -119,6 +148,8 @@
         }
 
         map.on('click', onMapClick);
+
+
 
     </script>
 
