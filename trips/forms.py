@@ -27,6 +27,8 @@ class PointsOfInterestModelForm(forms.ModelForm):
 class PointsOfInterestForm(forms.Form):
 
     extra_points_count = forms.CharField(widget=forms.HiddenInput())
+    # ToDo: Add it!
+    links_and_values = forms.CharField(widget=forms.HiddenInput())
 
     # Add a new field of when '+' is clicked
     def __init__(self, *args, **kwargs):

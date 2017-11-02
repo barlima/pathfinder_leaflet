@@ -17,7 +17,8 @@ class Trip(models.Model):
 class PointsOfInterest(models.Model):
     """Contains a list of points which are going to be visited by the user"""
     trip = models.ForeignKey(Trip)
-    points = models.CharField(max_length=1000)
+    points = models.TextField(default='')
+    routes = models.TextField(default='')
 
     def set_points(self, point):
         self.points = json.dumps(point)
