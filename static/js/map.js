@@ -37,7 +37,6 @@ function addMiddlePoint(id, value) {
 
 
 function countDistances(A, B) {
-
     var routes = {};
 
     var routingControl = L.Routing.control({
@@ -53,11 +52,14 @@ function countDistances(A, B) {
     routingControl.on('routesfound', function (e) {
         var total_route = e.routes[0];
         var total_distance = total_route.summary.totalDistance;
-        var total_time = total_route.summary.totalTime;
-
+        // var total_time = total_route.summary.totalTime;
         var value = A + "/" + B + "/" + total_distance + ":";
 
-        // $("[id=distances]").val($("[id=distances]").val() + total_distance + ', ');
-        $("[id=distance]").val($("[id=distance]").val() + value);
+        debugger;
+        links_and_values += value;
+        routes_number++;
+        routeFound = true;
     });
+
+
 }

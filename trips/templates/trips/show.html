@@ -1,0 +1,39 @@
+{% extends 'map/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <script src="{% static 'node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js' %}"></script>
+    <script src="{% static 'js/map.js' %}"></script>
+
+    <!-- Display map -->
+    <div class="map" id="map"></div>
+
+    <script type="text/javascript">
+        var map = L.map('map').setView([42.35, -71.08], 13);
+
+        L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
+             attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+             maxZoom: 17,
+             minZoom: 9
+        }).addTo(map);
+
+        {% for point in points %}
+            L.marker([{{ point.latitude }}, {{ point.longitude }}]).addTo(map);
+        {% endfor %}
+
+        L.Routing.control({
+            serviceUrl: 'http://127.0.0.1:5000/route/v1',
+            waypoints: [
+                {% for point in points %}
+                    L.latLng([{{ point.latitude }}, {{ point.longitude }}]),
+                {% endfor %}
+            ],
+            routeWhileDragging: true,
+            show: false
+        }).addTo(map);
+
+    </script>
+
+{% endblock content %}
