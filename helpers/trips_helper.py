@@ -1,17 +1,20 @@
 # Helper for trips controller to count the shortest path
 from collections import defaultdict
+from tsp_solver.greedy import solve_tsp
 import math
 import json
 
 
 class Graph:
     def __init__(self):
+        self.nodes_amount = 0
         self.nodes = set()
         self.edges = defaultdict(list)
         self.distances = {}
 
     def add_node(self, value):
         self.nodes.add(value)
+        self.nodes_amount += 1
 
     def add_edges(self, from_node, to_node, distance):
         self.edges[from_node].append(to_node)
@@ -46,8 +49,11 @@ def prepare_shortest_path(points, routes_text):
         map_graph.add_node(link.sink)
         map_graph.add_edges(link.source, link.sink, link.weight)
 
-    # ToDo: If source == sink use Travelling Salesman Problem
-    distance, path = shortest_hamiltonian(map_graph, '0', '1') #str(len(points) - 1))
+    # If source == sink use Travelling Salesman Problem
+    if '0' == '1':
+        distance, path = tsp(map_graph)
+    else:
+        distance, path = shortest_hamiltonian(map_graph, '0', '1')
 
     return distance, path
 
@@ -166,6 +172,29 @@ def shortest_hamiltonian(graph, source, sink):
     path = path_swap
 
     return min(distances), path[distances.index(min(distances))].split(':')
+
+
+def tsp(graph):
+    matrix = []
+    line = []
+
+    for n in graph.nodes:
+        for m in graph.nodes:
+            if n == m:
+                line.append(0)
+            else:
+                line.append(graph.distances[(n, m)])
+        matrix.append(line)
+        line = []
+
+    path = solve_tsp(matrix)
+    # print(path)
+    # path.append(path[0])
+    # print(path)
+    # ToDo: count the distance in a proper way
+    distance = 1000
+
+    return distance, [str(p) for p in path]
 
 
 def set_proper_order(points, order):
